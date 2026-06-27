@@ -23,6 +23,10 @@ export interface Quote {
   characterProfile: CharacterProfile;
   rarity: Rarity;
   timelineOrder: number;
+  /** 聖書に基づく人物の簡単な紹介 */
+  bio: string;
+  /** その人物が生きた時代の説明 */
+  eraDescription: string;
 }
 
 export interface CollectionEntry {

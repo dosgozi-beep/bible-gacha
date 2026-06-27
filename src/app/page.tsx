@@ -18,17 +18,16 @@ export default function HomePage() {
   const [drawnToday, setDrawnToday] = useState(false);
   const [count, setCount] = useState(0);
   const [todayQuote, setTodayQuote] = useState<Quote | undefined>(undefined);
+  const [playPV, setPlayPV] = useState(false);
 
   useEffect(() => {
     setMounted(true);
     const today = getTodayKey();
-    const drawn = !canDrawToday();
-    setDrawnToday(drawn);
+    setDrawnToday(!canDrawToday());
 
     const col = getCollection();
     setCount(col.length);
 
-    // 今日の名言: 当日日記の紐付け → 最新取得名言の順で優先
     const diaryToday = getDiary().find((e) => e.date === today);
     if (diaryToday && diaryToday.quoteId >= 0) {
       setTodayQuote(quoteById(diaryToday.quoteId));
@@ -46,12 +45,22 @@ export default function HomePage() {
 
   return (
     <main className="animate-fadeIn space-y-6">
-      <header className="text-center">
-        <h1 className="text-2xl font-bold text-brown">聖書名言ガチャ</h1>
-        <p className="mt-1 text-xs text-brown-light">
-          今日の一言を、心の指針に。
+      {/* ヒーロー：RE:BIBLE キービジュアル（画面端まで広げる） */}
+      <section className="-mx-5 -mt-8 sm:-mt-10">
+        <div className="relative">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/brand/hero.png"
+            alt="Re:Bible"
+            className="w-full object-cover"
+          />
+          {/* 下側を羊皮紙へなじませるグラデーション */}
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-parchment" />
+        </div>
+        <p className="mt-1 px-5 text-center text-xs tracking-wide text-brown-light">
+          1日1枚、聖書の名言を集める。今日の一言を、心の指針に。
         </p>
-      </header>
+      </section>
 
       {/* 当日ステータス */}
       <div className="flex items-center justify-between rounded-xl border border-parchment-dark bg-parchment-light px-4 py-3 text-sm shadow-card">
@@ -67,9 +76,9 @@ export default function HomePage() {
       {!drawnToday && (
         <Link
           href="/gacha"
-          className="block animate-cardReveal rounded-2xl bg-gold px-6 py-5 text-center font-bold text-parchment-light shadow-glow transition-colors hover:bg-gold-dark"
+          className="block animate-cardReveal rounded-2xl bg-gold px-6 py-5 text-center text-lg font-bold text-brown-dark shadow-glow transition-transform hover:scale-[1.02]"
         >
-          🎲 今日のガチャを引く
+          🎲 今日のガチャを回す
         </Link>
       )}
 
@@ -80,7 +89,7 @@ export default function HomePage() {
           <QuoteCard quote={todayQuote} />
         ) : (
           <p className="rounded-xl border border-parchment-dark bg-parchment-light p-4 text-center text-sm text-brown-light shadow-card">
-            まだ名言がありません。ガチャを引いてみましょう。
+            まだ名言がありません。ガチャを回してみましょう。
           </p>
         )}
       </section>
@@ -116,6 +125,41 @@ export default function HomePage() {
           📝 日記
         </Link>
       </div>
+
+      {/* PV動画 */}
+      <section className="space-y-2">
+        <h2 className="text-sm font-bold text-brown">PV動画</h2>
+        <div className="overflow-hidden rounded-2xl border border-parchment-dark shadow-card">
+          {!playPV ? (
+            <button
+              onClick={() => setPlayPV(true)}
+              className="relative block w-full"
+              aria-label="PV動画を再生"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/pv/thumbnail.jpg"
+                alt="Re:Bible PV"
+                className="aspect-video w-full object-cover"
+              />
+              <span className="absolute inset-0 flex items-center justify-center bg-brown-dark/30">
+                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-parchment-light/90 text-2xl text-brown shadow-glow">
+                  ▶
+                </span>
+              </span>
+            </button>
+          ) : (
+            <video
+              src="/pv/rebible.mp4"
+              poster="/pv/thumbnail.jpg"
+              controls
+              autoPlay
+              playsInline
+              className="aspect-video w-full bg-black"
+            />
+          )}
+        </div>
+      </section>
     </main>
   );
 }

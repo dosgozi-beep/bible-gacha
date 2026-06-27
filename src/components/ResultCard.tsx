@@ -76,6 +76,22 @@ export default function ResultCard({ quote }: { quote: Quote }) {
           </p>
         </div>
 
+        {/* 人物紹介（聖書ベース） */}
+        <div className="rounded-lg bg-parchment-dark/40 p-3">
+          <p className="mb-1 text-xs font-bold text-gold-dark">
+            {quote.speaker}とは
+          </p>
+          <p className="text-xs leading-relaxed text-brown">{quote.bio}</p>
+        </div>
+
+        {/* 時代背景 */}
+        <div className="rounded-lg bg-parchment-dark/40 p-3">
+          <p className="mb-1 text-xs font-bold text-gold-dark">時代背景</p>
+          <p className="text-xs leading-relaxed text-brown">
+            {quote.eraDescription}
+          </p>
+        </div>
+
         {/* 人物プロフィール（全項目） */}
         <div className="space-y-1.5 border-t border-parchment-dark pt-3">
           <p className="mb-1 text-xs font-bold text-gold-dark">人物プロフィール</p>
