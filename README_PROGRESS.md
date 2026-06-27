@@ -53,6 +53,7 @@ LSキー: bg_lastDraw / bg_collection / bg_diary
 - [x] Step17 品質確認: tsc型チェック0件 / next build 成功(全7ルート静的生成) / next lint 警告0。package.jsonにeslint依存追加、.eslintrc.json/.gitignore整備
 - [x] Step18 quotes.ts 全20件のquoteを口語訳本文で記入(データのみ。UI/ロジック/型は無変更)。tsc再チェック0件
 - [x] Step19 キャラ画像配置 (12/12完了。各1254x1254 PNG。参照と完全一致)
+- [x] Step21 ガチャ演出刷新: 王宮ガチャ画像(public/gacha/machine.png)を背景に、回すボタン→光→ScatterText(文字が口元で舞って集合)→ResultCard(画像/名言/章節/全プロフィール/場面説明)→トップへ戻る。GachaEffectは図鑑用QuoteCardのみ残置。Vercel deploy済み構成
 - [x] Step20 最終ビルド: 画像反映後 next build 成功(全5ルート静的生成、/ 102kB等)。全機能完成
 
 ## Tailwindトークン
@@ -111,4 +112,4 @@ clearAll() … 開発用リセット。STORAGE_KEYS をexport。
 ## 再開方法
 このファイルのタスク一覧で `[ ]` の最初の項目から続行する。
 
-NEXT TASK: コア開発は完了（全機能+画像+ビルド成功）。任意の追加候補 → ①clearAll()を呼ぶ開発用リセットボタンの設置(設定画面) ②Firebase連携への移行(storage.ts/collection.ts/diary.tsのI/Oを差し替え) ③名言データ20→拡充 ④OGP/PWA対応。優先度は要相談。
+NEXT TASK: ガチャ演出を反映するには変更分(src/components/ScatterText.tsx, ResultCard.tsx, src/app/gacha/page.tsx, public/gacha/machine.png)をGitHub Desktopでcommit&push→Vercel自動再デプロイ。任意の追加候補: 散らばり量や速度の微調整、SSR時の特別演出、リセットボタン、Firebase連携。
