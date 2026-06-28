@@ -13,42 +13,43 @@ body {
 }
 
 body {
-  /* 当時のイスラエルの街並みを全面背景に（固定） */
   background-color: theme("colors.parchment.DEFAULT");
-  background-image: url("/brand/bg.jpg");
-  background-size: cover;
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   color: theme("colors.brown.DEFAULT");
   font-family: theme("fontFamily.serif");
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
 
-/* 背景の上に薄い羊皮紙の膜を重ね、文字とカードの可読性を保つ */
-body::before {
-  content: "";
+/* 固定背景レイヤー（縦長画像をビューポートに敷き詰める） */
+.app-bg {
   position: fixed;
   inset: 0;
-  background-color: rgba(244, 236, 216, 0.62);
-  pointer-events: none;
-  z-index: 0;
+  z-index: -2;
+  background-image: url("/brand/bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
-
-/* ページ別の背景画像（body[data-bg]で切替） */
-body[data-bg="collection"] {
+/* 背景の上の羊皮紙の膜 */
+.app-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(244, 236, 216, 0.6);
+}
+/* ページ別背景（data-bgで切替） */
+.app-bg[data-bg="collection"] {
   background-image: url("/brand/bg-collection.jpg");
 }
-body[data-bg="diary"] {
+.app-bg[data-bg="diary"] {
   background-image: url("/brand/bg-diary.jpg");
 }
-/* ガチャは宇宙（暗い）。背景はそのまま、膜は暗めにして文字を映えさせる */
-body[data-bg="gacha"] {
+.app-bg[data-bg="gacha"] {
   background-image: url("/brand/bg-gacha.jpg");
 }
-body[data-bg="gacha"]::before {
-  background-color: rgba(20, 16, 30, 0.45);
+/* ガチャ（宇宙）は暗めの膜で文字を映えさせる */
+.app-bg[data-bg="gacha"]::after {
+  background-color: rgba(18, 14, 28, 0.42);
 }
 
 /* 本文コンテンツは膜より前面に */

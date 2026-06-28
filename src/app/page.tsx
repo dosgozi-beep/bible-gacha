@@ -45,7 +45,7 @@ export default function HomePage() {
 
   return (
     <main className="animate-fadeIn space-y-6">
-      {/* ヒーロー：RE:BIBLE キービジュアル（画面端まで広げる） */}
+      {/* ヒーロー：RE:BIBLE キービジュアル（画面端まで広げ、背景になじませる） */}
       <section className="-mx-5 -mt-8 sm:-mt-10">
         <div className="relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -54,10 +54,13 @@ export default function HomePage() {
             alt="Re:Bible"
             className="w-full object-cover"
           />
-          {/* 下側を羊皮紙へなじませるグラデーション */}
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-b from-transparent to-parchment" />
+          {/* 四辺を羊皮紙へなじませるグラデーション */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-parchment to-transparent" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-parchment" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-parchment to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-parchment to-transparent" />
         </div>
-        <p className="mt-1 px-5 text-center text-xs tracking-wide text-brown-light">
+        <p className="-mt-2 px-5 text-center text-xs tracking-wide text-brown-light">
           1日1枚、聖書の名言を集める。今日の一言を、心の指針に。
         </p>
       </section>
@@ -128,36 +131,47 @@ export default function HomePage() {
 
       {/* PV動画 */}
       <section className="space-y-2">
-        <h2 className="text-sm font-bold text-brown">PV動画</h2>
-        <div className="overflow-hidden rounded-2xl border border-parchment-dark shadow-card">
-          {!playPV ? (
-            <button
-              onClick={() => setPlayPV(true)}
-              className="relative block w-full"
-              aria-label="PV動画を再生"
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src="/pv/thumbnail.jpg"
-                alt="Re:Bible PV"
-                className="aspect-video w-full object-cover"
-              />
-              <span className="absolute inset-0 flex items-center justify-center bg-brown-dark/30">
-                <span className="flex h-14 w-14 items-center justify-center rounded-full bg-parchment-light/90 text-2xl text-brown shadow-glow">
-                  ▶
+        <div className="flex items-center justify-center gap-2">
+          <span className="h-px w-8 bg-gold-dark/60" />
+          <h2 className="text-sm font-bold tracking-widest text-gold-dark">
+            ◆ PV動画 ◆
+          </h2>
+          <span className="h-px w-8 bg-gold-dark/60" />
+        </div>
+        <div className="rounded-2xl bg-gradient-to-b from-gold to-gold-dark p-[3px] shadow-glow">
+          <div className="overflow-hidden rounded-[14px] border border-parchment-light/30 bg-brown-dark">
+            {!playPV ? (
+              <button
+                onClick={() => setPlayPV(true)}
+                className="relative block w-full"
+                aria-label="PV動画を再生"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/pv/thumbnail.jpg"
+                  alt="Re:Bible PV"
+                  className="aspect-video w-full object-cover"
+                />
+                <span className="absolute inset-0 flex items-center justify-center bg-brown-dark/25">
+                  <span className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold bg-brown-dark/70 text-2xl text-gold shadow-glow transition-transform hover:scale-110">
+                    ▶
+                  </span>
                 </span>
-              </span>
-            </button>
-          ) : (
-            <video
-              src="/pv/rebible.mp4"
-              poster="/pv/thumbnail.jpg"
-              controls
-              autoPlay
-              playsInline
-              className="aspect-video w-full bg-black"
-            />
-          )}
+                <span className="absolute bottom-2 right-3 rounded bg-brown-dark/80 px-2 py-0.5 text-[11px] font-bold tracking-wide text-gold">
+                  Re:Bible 公式PV
+                </span>
+              </button>
+            ) : (
+              <video
+                src="/pv/rebible.mp4"
+                poster="/pv/thumbnail.jpg"
+                controls
+                autoPlay
+                playsInline
+                className="aspect-video w-full bg-black"
+              />
+            )}
+          </div>
         </div>
       </section>
     </main>

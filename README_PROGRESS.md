@@ -53,6 +53,8 @@ LSキー: bg_lastDraw / bg_collection / bg_diary
 - [x] Step17 品質確認: tsc型チェック0件 / next build 成功(全7ルート静的生成) / next lint 警告0。package.jsonにeslint依存追加、.eslintrc.json/.gitignore整備
 - [x] Step18 quotes.ts 全20件のquoteを口語訳本文で記入(データのみ。UI/ロジック/型は無変更)。tsc再チェック0件
 - [x] Step19 キャラ画像配置 (12/12完了。各1254x1254 PNG。参照と完全一致)
+- [x] Step26 名言データ修正: ヨシュア記1:9の場面説明を口語訳で検証し訂正(誤=ヨシュアが民を鼓舞→正=モーセ死後、神がヨシュアに命じ励ました場面)。他19件は預言者/詩人が神の言葉を取り次ぐ形で妥当と確認。
+- [x] Step25 背景方式変更&装飾: 背景をbody固定からlayout内.app-bg固定レイヤー(z-index:-2)へ変更し縦長画像をcoverで全面表示・data-bgで切替(usePageBgは.app-bg対象に変更)。トップPV動画を金枠+▶+ラベルで装飾。ヒーロー画像を四辺グラデで背景になじませ。
 - [x] Step24 ページ別背景&UI調整: ResultCardから人物プロフィール削除。全ボタンを金装飾(.btn-ornate/.btn-ornate-dark)化。ページ別背景(usePageBgでbody[data-bg]切替): 図鑑=図書館bg-collection.jpg/日記=執筆部屋bg-diary.jpg/ガチャ=宇宙カプセルbg-gacha.jpg(膜は暗め)。ホーム/共通=街並みbg.jpg
 - [x] Step23 全画面背景: 当時のイスラエル街並み画像(public/brand/bg.jpg 244KB)をbody固定背景に。body::beforeで羊皮紙62%オーバーレイを重ね可読性確保(本文はz-1で前面)。PVサムネをRE:BIBLE聖書ビジュアル(public/pv/thumbnail.jpg)に差替・軽量化
 - [x] Step22 コンテンツ拡充: Quote型にbio(人物紹介)/eraDescription(時代背景)追加・全20件記入。ResultCardに人物紹介と時代背景を表示。トップをRE:BIBLEヒーロー画像(public/brand/hero.png)+PV動画(public/pv/rebible.mp4 720p圧縮29MB+thumbnail.jpg)に刷新。図鑑を全20枠グリッド化(取得=画像+名言/未取得=？マーク+黒塗り名言redact.ts、タップで詳細モーダル)
@@ -115,4 +117,4 @@ clearAll() … 開発用リセット。STORAGE_KEYS をexport。
 ## 再開方法
 このファイルのタスク一覧で `[ ]` の最初の項目から続行する。
 
-NEXT TASK: 変更分をcommit&push→再デプロイ。新規素材: public/brand/bg-collection.jpg, bg-diary.jpg, bg-gacha.jpg。新規コード: src/lib/usePageBg.ts。変更: globals.css, ResultCard.tsx, app/page.tsx, app/gacha・collection・diary/page.tsx。実機で背景濃度やボタンの見え方を確認し微調整可。
+NEXT TASK: 変更分(src/data/quotes.ts のみ)をcommit&push→再デプロイ。前回の背景/UI変更も未pushなら一緒に反映。他の名言の場面説明で気になる箇所があれば都度口語訳を確認して訂正可。

@@ -55,7 +55,7 @@ export const quotes: Quote[] = [
     speaker: "ヨシュア",
     reference: "ヨシュア記 1:9",
     era: "BC1375",
-    background: "約束の地へ進軍する直前、恐れず雄々しくあれと神に命じられ民を鼓舞した場面。",
+    background: "モーセの死後、約束の地カナンへ民を導く使命を託されたヨシュアに、神（主）が「強く、また雄々しくあれ」と命じ、共にいることを約束して励ました場面。",
     characterImage: "/characters/joshua.png",
     characterProfile: {
       age: "50代",

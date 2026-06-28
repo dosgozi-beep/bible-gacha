@@ -22,6 +22,8 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="min-h-screen">
+        {/* 固定背景レイヤー（ページ別に data-bg を切替） */}
+        <div className="app-bg" aria-hidden="true" />
         {/* モバイルファースト・最大幅制限・高級感のある余白。pb-24で下部固定ナビ分を確保 */}
         <div className="mx-auto w-full max-w-md px-5 pb-24 pt-8 sm:pt-10">
           {children}
