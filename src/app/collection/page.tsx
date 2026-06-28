@@ -135,6 +135,9 @@ export default function CollectionPage() {
         })}
       </div>
 
+      {/* ボーナスステージへの入口（チラ見せ演出） */}
+      <BonusTeaser owned={count} total={total} />
+
       {/* 詳細モーダル */}
       {selected && (
         <DetailModal
@@ -218,5 +221,65 @@ function DetailModal({
         </button>
       </div>
     </div>
+  );
+}
+
+function BonusTeaser({ owned, total }: { owned: number; total: number }) {
+  const unlocked = owned >= total;
+  const remain = total - owned;
+
+  return (
+    <section className="pt-2">
+      <div className="flex items-center justify-center gap-2 pb-2">
+        <span className="h-px w-6 bg-gold-dark/50" />
+        <span className="font-display text-xs font-bold tracking-[0.25em] text-gold-dark">
+          ??? BONUS ???
+        </span>
+        <span className="h-px w-6 bg-gold-dark/50" />
+      </div>
+
+      <Link
+        href={unlocked ? "/bonus" : "/collection"}
+        className={`relative block overflow-hidden rounded-2xl border shadow-card ${
+          unlocked
+            ? "border-gold"
+            : "pointer-events-none border-parchment-dark"
+        }`}
+      >
+        {/* 中身（未解放はぼかす） */}
+        <div
+          className={`flex items-center gap-3 bg-gradient-to-r from-brown-dark to-brown p-4 ${
+            unlocked ? "" : "blur-[3px]"
+          }`}
+        >
+          <span className="text-4xl">🏛️</span>
+          <div className="text-left">
+            <p className="font-display text-base font-extrabold text-gold">
+              御言葉に生きた偉人たち
+            </p>
+            <p className="text-[11px] text-parchment">
+              聖書の言葉に力を受け、世界を変えた人々の物語
+            </p>
+          </div>
+        </div>
+
+        {/* 未解放オーバーレイ：半分隠れて見える演出 */}
+        {!unlocked && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-brown-dark/55">
+            <span className="text-2xl">🔒</span>
+            <p className="font-display mt-1 text-sm font-extrabold text-parchment-light">
+              図鑑コンプリートで解放
+            </p>
+            <p className="text-xs text-gold">あと {remain} 枚</p>
+          </div>
+        )}
+      </Link>
+
+      {unlocked && (
+        <p className="mt-2 text-center text-xs text-gold-dark">
+          🎉 解放されました！タップして偉人たちの物語へ
+        </p>
+      )}
+    </section>
   );
 }

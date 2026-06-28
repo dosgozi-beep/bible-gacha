@@ -4,86 +4,83 @@ import { useEffect, useMemo, useState } from "react";
 
 type Props = {
   text: string;
-  /** 1文字ごとの舞い出し間隔(ms) */
-  stagger?: number;
+  /** 円運動の継続時間(ms) */
+  orbit?: number;
   /** 集合アニメ所要(ms) */
   settle?: number;
-  /** 集合完了時コールバック */
+  /** 集合完了コールバック */
   onDone?: () => void;
 };
 
-// 口元で小さく舞う、控えめな散らばり（決定的擬似ランダム）
-function scatterFor(i: number) {
-  const r1 = Math.sin(i * 12.9898) * 43758.5453;
-  const r2 = Math.sin(i * 78.233) * 12543.987;
-  const fx = r1 - Math.floor(r1) - 0.5; // -0.5..0.5
-  const fy = r2 - Math.floor(r2) - 0.5;
-  return {
-    dx: Math.round(fx * 80), // 横 ±40px
-    dy: Math.round(-16 - Math.abs(fy) * 64), // 口元から上へ舞う
-    rot: Math.round(fx * 46), // ±23deg
-  };
-}
-
-type Phase = "hidden" | "scatter" | "gather";
+type Phase = "orbit" | "gather";
 
 export default function ScatterText({
   text,
-  stagger = 55,
-  settle = 520,
+  orbit = 1700,
+  settle = 600,
   onDone,
 }: Props) {
   const chars = useMemo(() => Array.from(text), [text]);
-  const [phase, setPhase] = useState<Phase>("hidden");
+  const [phase, setPhase] = useState<Phase>("orbit");
 
   useEffect(() => {
-    setPhase("hidden");
-    // すぐ舞い出し → 全文字出てから集合
-    const t0 = window.setTimeout(() => setPhase("scatter"), 30);
-    const outDone = chars.length * stagger + 220;
-    const t1 = window.setTimeout(() => setPhase("gather"), outDone);
-    const t2 = window.setTimeout(() => onDone?.(), outDone + settle + 140);
+    setPhase("orbit");
+    const t1 = window.setTimeout(() => setPhase("gather"), orbit);
+    const t2 = window.setTimeout(() => onDone?.(), orbit + settle + 120);
     return () => {
-      window.clearTimeout(t0);
       window.clearTimeout(t1);
       window.clearTimeout(t2);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [text]);
 
+  const n = chars.length;
+  const radius = 96; // 円周の半径(px)
+
   return (
-    <p
-      className="flex flex-wrap items-center justify-center gap-x-0.5 text-center text-lg font-bold leading-relaxed text-parchment-light"
-      style={{ textShadow: "0 1px 6px rgba(0,0,0,0.65)" }}
-      aria-label={text}
-    >
-      {chars.map((ch, i) => {
-        const s = scatterFor(i);
-        let transform = "translate(0,0) rotate(0deg)";
-        let opacity = 0;
-        if (phase === "scatter") {
-          transform = `translate(${s.dx}px, ${s.dy}px) rotate(${s.rot}deg)`;
-          opacity = 0.85;
-        } else if (phase === "gather") {
-          transform = "translate(0,0) rotate(0deg)";
-          opacity = 1;
-        }
-        const style: React.CSSProperties = {
-          display: "inline-block",
-          whiteSpace: "pre",
-          transform,
-          opacity,
-          transition:
-            phase === "scatter"
-              ? `transform 360ms ease-out ${i * stagger}ms, opacity 240ms ease ${i * stagger}ms`
-              : `transform ${settle}ms cubic-bezier(.22,.61,.36,1) ${i * 16}ms, opacity 260ms ease`,
-        };
-        return (
-          <span key={i} style={style}>
-            {ch === " " ? "\u00A0" : ch}
-          </span>
-        );
-      })}
-    </p>
+    <div className="relative h-[260px] w-full">
+      {/* 円運動フェーズ：文字を円周上に並べて回す */}
+      {phase === "orbit" && (
+        <div
+          className="absolute left-1/2 top-1/2"
+          style={{
+            animation: "spin-orbit 1.7s linear",
+            transformOrigin: "center",
+          }}
+        >
+          {chars.map((ch, i) => {
+            const angle = (360 / n) * i;
+            return (
+              <span
+                key={i}
+                className="font-display absolute text-lg font-extrabold text-gold"
+                style={{
+                  left: 0,
+                  top: 0,
+                  transform: `rotate(${angle}deg) translateX(${radius}px) rotate(-${angle}deg)`,
+                  textShadow: "0 1px 6px rgba(0,0,0,0.7)",
+                  opacity: 0,
+                  animation: `char-appear 0.4s ease forwards ${i * 40}ms`,
+                }}
+              >
+                {ch === " " ? "\u00A0" : ch}
+              </span>
+            );
+          })}
+        </div>
+      )}
+
+      {/* 集合フェーズ：中央で1つの名言に */}
+      {phase === "gather" && (
+        <div className="absolute inset-x-2 top-1/2 -translate-y-1/2">
+          <p
+            className="font-display animate-cardReveal text-center text-lg font-extrabold leading-relaxed text-parchment-light"
+            style={{ textShadow: "0 1px 8px rgba(0,0,0,0.75)" }}
+          >
+            {text}
+          </p>
+        </div>
+      )}
+    </div>
   );
 }

@@ -53,6 +53,9 @@ LSキー: bg_lastDraw / bg_collection / bg_diary
 - [x] Step17 品質確認: tsc型チェック0件 / next build 成功(全7ルート静的生成) / next lint 警告0。package.jsonにeslint依存追加、.eslintrc.json/.gitignore整備
 - [x] Step18 quotes.ts 全20件のquoteを口語訳本文で記入(データのみ。UI/ロジック/型は無変更)。tsc再チェック0件
 - [x] Step19 キャラ画像配置 (12/12完了。各1254x1254 PNG。参照と完全一致)
+- [x] Step29 ボーナスステージ実装: types に Legend追加。src/data/legends.ts に6偉人(新島襄/ジャンヌ/リンカーン/マザーテレサ/キング牧師/マンデラ)を聖句・出会い・功績・生涯付きで作成(全て事実確認済)。/bonus ページ作成=図鑑20コンプで解放(未満はロック画面「あと○枚」)、偉人をシルエット風アイコン+テーマ色のカードで表示・タップで詳細モーダル。図鑑下部に BonusTeaser=チラ見せバナー(未解放はぼかし+「図鑑コンプリートで解放 あと○枚」、解放で/bonusへ)。
+- [x] Step28 トップにタイトル「1日1言 名言ガチャ」(font-display)+その下RE:BIBLE画像。ガチャ演出を円運動(spin-orbit)に変更=文字がガチャ周囲を円周で回り中央で名言に集合。ボーナスステージ用に6偉人(マンデラ/ジャンヌ/マザーテレサ/キング牧師/新島襄/リンカーン)の聖句・逸話・功績・生涯をweb検索で事実確認済(次ステップで実装)。
+- [x] Step27 背景割当修正&トップUI: 背景の取り違えを修正(日記=執筆部屋/図鑑=図書館/ガチャ=宇宙)。トップのキャッチを画像下に移動・Shippori Mincho B1(link読込)で力強く表示・文言変更(1日1言…/今日の名言を、心の指針に。)。今日のガチャ状態をガチャ機械の丸アイコン(public/gacha/icon.jpg)+暗幕+金色「済/未」オーバーレイに。
 - [x] Step26 名言データ修正: ヨシュア記1:9の場面説明を口語訳で検証し訂正(誤=ヨシュアが民を鼓舞→正=モーセ死後、神がヨシュアに命じ励ました場面)。他19件は預言者/詩人が神の言葉を取り次ぐ形で妥当と確認。
 - [x] Step25 背景方式変更&装飾: 背景をbody固定からlayout内.app-bg固定レイヤー(z-index:-2)へ変更し縦長画像をcoverで全面表示・data-bgで切替(usePageBgは.app-bg対象に変更)。トップPV動画を金枠+▶+ラベルで装飾。ヒーロー画像を四辺グラデで背景になじませ。
 - [x] Step24 ページ別背景&UI調整: ResultCardから人物プロフィール削除。全ボタンを金装飾(.btn-ornate/.btn-ornate-dark)化。ページ別背景(usePageBgでbody[data-bg]切替): 図鑑=図書館bg-collection.jpg/日記=執筆部屋bg-diary.jpg/ガチャ=宇宙カプセルbg-gacha.jpg(膜は暗め)。ホーム/共通=街並みbg.jpg
@@ -117,4 +120,4 @@ clearAll() … 開発用リセット。STORAGE_KEYS をexport。
 ## 再開方法
 このファイルのタスク一覧で `[ ]` の最初の項目から続行する。
 
-NEXT TASK: 変更分(src/data/quotes.ts のみ)をcommit&push→再デプロイ。前回の背景/UI変更も未pushなら一緒に反映。他の名言の場面説明で気になる箇所があれば都度口語訳を確認して訂正可。
+NEXT TASK: 全変更をcommit&push→Vercel再デプロイ。新規: src/data/legends.ts, src/app/bonus/page.tsx。変更: types/index.ts, app/collection/page.tsx, app/page.tsx, components/ScatterText.tsx, tailwind.config.ts, layout.tsx, globals.css 等(タイトル/円運動演出/ボーナス)。偉人画像はシルエット(絵文字+テーマ色グラデ)。後日ChatGPTでシルエット画像を用意して差替も可。動作確認: 図鑑20枚集めると図鑑下のバナーが解放し/bonusが開く。

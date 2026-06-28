@@ -39,3 +39,18 @@ export interface DiaryEntry {
   quoteId: number;
   body: string;
 }
+
+// ボーナスステージ：聖書の言葉に力を受けた偉人
+export interface Legend {
+  id: number;
+  name: string; // 氏名
+  era: string; // 生没年・活動年代
+  title: string; // 肩書き・一言で何者か
+  symbol: string; // 象徴を表す絵文字アイコン
+  verse: string; // 影響を受けた聖句（本文）
+  verseRef: string; // 聖句の出典
+  episode: string; // 聖書の言葉に影響を受けたエピソード
+  achievement: string; // 成し遂げたこと
+  life: string; // 生涯の背景
+  colorTheme: string; // テーマ色（hex）
+}

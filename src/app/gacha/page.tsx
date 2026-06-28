@@ -69,9 +69,9 @@ export default function GachaPage() {
             <div className="pointer-events-none absolute inset-0 animate-shine bg-gradient-to-tr from-gold/40 via-transparent to-transparent" />
           )}
 
-          {/* 文字が舞って集まる：機械の口元あたり(下寄り)に配置 */}
+          {/* 文字がガチャの周りを円周で回り、中央で名言になる */}
           {phase === "scatter" && result && (
-            <div className="absolute inset-x-3 bottom-6 top-1/2 flex items-center justify-center">
+            <div className="absolute inset-x-2 inset-y-0 flex items-center justify-center">
               <ScatterText
                 text={result.quote}
                 onDone={() => setPhase("result")}

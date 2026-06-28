@@ -45,8 +45,22 @@ export default function HomePage() {
 
   return (
     <main className="animate-fadeIn space-y-6">
+      {/* アプリタイトル */}
+      <section className="-mt-2 text-center">
+        <div className="flex items-center justify-center gap-2">
+          <span className="h-px w-6 bg-gold-dark/60" />
+          <span className="font-display text-xs font-bold tracking-[0.3em] text-gold-dark">
+            BIBLE QUOTE GACHA
+          </span>
+          <span className="h-px w-6 bg-gold-dark/60" />
+        </div>
+        <h1 className="font-display mt-1 text-3xl font-extrabold tracking-wide text-brown">
+          <span className="text-gold-dark">1日1言</span> 名言ガチャ
+        </h1>
+      </section>
+
       {/* ヒーロー：RE:BIBLE キービジュアル（画面端まで広げ、背景になじませる） */}
-      <section className="-mx-5 -mt-8 sm:-mt-10">
+      <section className="-mx-5">
         <div className="relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -60,18 +74,39 @@ export default function HomePage() {
           <div className="pointer-events-none absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-parchment to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-parchment to-transparent" />
         </div>
-        <p className="-mt-2 px-5 text-center text-xs tracking-wide text-brown-light">
-          1日1枚、聖書の名言を集める。今日の一言を、心の指針に。
-        </p>
+        {/* キャッチコピー：画像の下に、力強い明朝で目立たせる */}
+        <div className="px-4 pt-2 text-center">
+          <p className="font-display text-base font-extrabold leading-relaxed tracking-wide text-brown">
+            1日1言、聖書の名言を集める。
+          </p>
+          <p className="font-display mt-1 text-base font-extrabold leading-relaxed tracking-wide text-gold-dark">
+            今日の名言を、心の指針に。
+          </p>
+        </div>
       </section>
 
       {/* 当日ステータス */}
       <div className="flex items-center justify-between rounded-xl border border-parchment-dark bg-parchment-light px-4 py-3 text-sm shadow-card">
         <span className="text-brown-light">今日のガチャ</span>
-        <span
-          className={`font-bold ${drawnToday ? "text-brown" : "text-gold-dark"}`}
-        >
-          {drawnToday ? "済" : "未"}
+        <span className="relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border-2 border-gold shadow-glow">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/gacha/icon.jpg"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          {/* 文字を映えさせる暗幕 */}
+          <span className="absolute inset-0 bg-brown-dark/45" />
+          <span
+            className="relative font-display text-lg font-extrabold text-gold"
+            style={{
+              textShadow:
+                "0 0 4px rgba(0,0,0,0.9), 0 1px 2px rgba(0,0,0,0.9)",
+            }}
+          >
+            {drawnToday ? "済" : "未"}
+          </span>
         </span>
       </div>
 

@@ -65,6 +65,11 @@ h3 {
   letter-spacing: 0.02em;
 }
 
+/* 見出し用ディスプレイフォント（力強い明朝） */
+.font-display {
+  font-family: "Shippori Mincho B1", Georgia, "Times New Roman", serif;
+}
+
 /* 画像未配置でも崩れにくいフォールバック背景 */
 .char-img-fallback {
   background-color: theme("colors.parchment.dark");

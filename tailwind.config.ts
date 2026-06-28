@@ -60,6 +60,15 @@ const config: Config = {
           "50%": { opacity: "0.9" },
           "100%": { opacity: "0" },
         },
+        "spin-orbit": {
+          "0%": { transform: "rotate(0deg) scale(0.7)" },
+          "70%": { transform: "rotate(560deg) scale(1)" },
+          "100%": { transform: "rotate(720deg) scale(0.9)" },
+        },
+        "char-appear": {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         fadeIn: "fadeIn 0.6s ease-out",

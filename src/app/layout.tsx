@@ -21,6 +21,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="min-h-screen">
         {/* 固定背景レイヤー（ページ別に data-bg を切替） */}
         <div className="app-bg" aria-hidden="true" />
