@@ -3,11 +3,11 @@ import type { Quote } from "@/types";
 export const quotes: Quote[] = [
   {
     id: 1,
-    quote: "あなたがたは恐れてはならない。立って、主がきょう、あなたがたのためになされる救を見なさい。",
+    quote: "わたしは命と死、祝福とのろいをあなたの前に置いた。あなたは命を選ばなければならない。",
     speaker: "モーセ",
-    reference: "出エジプト記 14:13",
+    reference: "申命記 30:19",
     era: "BC1400",
-    background: "紅海を前に追い詰められた民に向かい、恐れず立って神の救いを見よと宣言した場面。",
+    background: "長い旅の終わり、モーセが民に語った最後の教え。人生には選択があり、自ら良い道を選び取るよう促した言葉。",
     characterImage: "/characters/moses.png",
     characterProfile: {
       age: "80代",
@@ -27,11 +27,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 2,
-    quote: "あなたは強く、かつ勇ましくあれ。彼らの前に恐れてはならない。あなたの神、主が共に行かれるからである。",
+    quote: "強く、また雄々しくあれ。恐れてはならない、おののいてはならない。",
     speaker: "モーセ",
     reference: "申命記 31:6",
     era: "BC1400",
-    background: "後継者と民に対し、強く雄々しくあれと励まし、神が共にいると告げた別れの言葉。",
+    background: "老いたモーセが後継者と民を励ました別れの言葉。未知の困難へ向かう者へ、恐れず進めと背中を押した。",
     characterImage: "/characters/moses.png",
     characterProfile: {
       age: "80代",
@@ -51,11 +51,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 3,
-    quote: "強く、また雄々しくあれ。恐れてはならない、おののいてはならない。あなたがどこへ行くにも、あなたの神、主が共におられるからである。",
+    quote: "あなたはこれを昼も夜も思い、そのうちにしるされていることを、ことごとく守って行わなければならない。そうするならば、あなたの道は栄える。",
     speaker: "ヨシュア",
-    reference: "ヨシュア記 1:9",
+    reference: "ヨシュア記 1:8",
     era: "BC1375",
-    background: "モーセの死後、約束の地カナンへ民を導く使命を託されたヨシュアに、神（主）が「強く、また雄々しくあれ」と命じ、共にいることを約束して励ました場面。",
+    background: "指導者となったヨシュアへの教え。学びを日々忘れず実践し続ける者の道が栄える、という継続と努力の知恵。",
     characterImage: "/characters/joshua.png",
     characterProfile: {
       age: "50代",
@@ -75,11 +75,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 4,
-    quote: "あなたがたは、仕える者を、きょう、選びなさい。ただし、わたしと、わたしの家とは、共に主に仕えます。",
+    quote: "あなたがたは、きょう、仕える者を選びなさい。",
     speaker: "ヨシュア",
     reference: "ヨシュア記 24:15",
     era: "BC1375",
-    background: "民に対し、誰に仕えるかを選べと迫り、自らは神に仕えると宣言した決意の言葉。",
+    background: "人生の岐路で、自分が何に従って生きるかを自ら選び取れと民に迫った、決断を促す言葉。",
     characterImage: "/characters/joshua.png",
     characterProfile: {
       age: "50代",
@@ -99,11 +99,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 5,
-    quote: "主よ、お話しください。しもべは聞きます。",
+    quote: "お話しください、わたしは聞きます。",
     speaker: "サムエル",
     reference: "サムエル記上 3:10",
     era: "BC1050",
-    background: "幼少のサムエルが神の呼びかけに「しもべは聞きます」と応えた召命の場面。",
+    background: "少年サムエルが呼びかけに応えた場面。耳を傾け、素直に聞こうとする姿勢を表した言葉。",
     characterImage: "/characters/samuel.png",
     characterProfile: {
       age: "60代",
@@ -127,7 +127,7 @@ export const quotes: Quote[] = [
     speaker: "サムエル",
     reference: "サムエル記上 16:7",
     era: "BC1050",
-    background: "王を選ぶ際、人は外見を見るが神は心を見るとダビデを見出した洞察の言葉。",
+    background: "王を選ぶ場面で語られた言葉。人を見た目や肩書きで判断せず、内面を見ることの大切さを教えている。",
     characterImage: "/characters/samuel.png",
     characterProfile: {
       age: "60代",
@@ -147,11 +147,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 7,
-    quote: "主はわたしの牧者であって、わたしには乏しいことがない。",
+    quote: "夕べには涙が宿っても、朝と共に喜びが来る。",
     speaker: "ダビデ",
-    reference: "詩篇 23:1",
+    reference: "詩篇 30:5",
     era: "BC1000",
-    background: "主は羊飼い、乏しいことはないと歌った、最も愛される詩篇の冒頭。",
+    background: "つらい夜も、やがて明ける。悲しみは永遠ではなく、時とともに喜びが訪れるという希望をうたった詩。",
     characterImage: "/characters/david.png",
     characterProfile: {
       age: "30代",
@@ -171,11 +171,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 8,
-    quote: "神よ、わたしのために、清い心を造り、わたしのうちに新しい、正しい霊を与えてください。",
+    quote: "主は心の砕けた者に近く、たましいの悔いくずおれた者を救われる。",
     speaker: "ダビデ",
-    reference: "詩篇 51:10",
+    reference: "詩篇 34:18",
     era: "BC1000",
-    background: "過ちを悔い、清い心を造ってくださいと神に祈った悔い改めの詩。",
+    background: "深く傷つき打ちひしがれた人にこそ救いは近い、とうたった詩。苦しむ人に寄り添う慰めの言葉。",
     characterImage: "/characters/david.png",
     characterProfile: {
       age: "30代",
@@ -195,11 +195,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 9,
-    quote: "心をつくして主に信頼せよ、自分の知識にたよってはならない。",
+    quote: "柔らかい答は憤りをとどめ、激しい言葉は怒りをひきおこす。",
     speaker: "ソロモン",
-    reference: "箴言 3:5",
+    reference: "箴言 15:1",
     era: "BC970",
-    background: "心を尽くして主に信頼し、自分の悟りに頼るなと教えた知恵の言葉。",
+    background: "ソロモンの知恵の言葉。穏やかな言葉が争いを鎮め、荒い言葉が怒りを招く。人間関係の機微を突いた教え。",
     characterImage: "/characters/solomon.png",
     characterProfile: {
       age: "40代",
@@ -223,7 +223,7 @@ export const quotes: Quote[] = [
     speaker: "ソロモン",
     reference: "伝道の書 3:1",
     era: "BC970",
-    background: "天の下では、すべてに時があると人生の巡りを詠んだ思索の言葉。",
+    background: "人生のすべてには「時」がある。喜びも悲しみも巡りめぐるという、移りゆく人生を見つめた思索の言葉。",
     characterImage: "/characters/solomon.png",
     characterProfile: {
       age: "40代",
@@ -243,11 +243,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 11,
-    quote: "しかし主を待ち望む者は新たなる力を得、わしのように翼をはって、のぼることができる。",
+    quote: "待ち望む者は新たなる力を得、わしのように翼をはって、のぼり、走っても疲れることがない。",
     speaker: "イザヤ",
     reference: "イザヤ書 40:31",
     era: "BC740",
-    background: "主を待ち望む者は新たな力を得て、わしのように翼を張ると希望を語った言葉。",
+    background: "疲れ果てたときも、望みを失わず待つ者は再び力を得る。困難の中で立ち上がる希望をうたった言葉。",
     characterImage: "/characters/isaiah.png",
     characterProfile: {
       age: "50代",
@@ -267,11 +267,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 12,
-    quote: "恐れてはならない、わたしはあなたと共にいる。驚いてはならない、わたしはあなたの神である。",
+    quote: "彼らはおのおのその隣を助け、その兄弟たちに「勇気を出せ」と言う。",
     speaker: "イザヤ",
-    reference: "イザヤ書 41:10",
+    reference: "イザヤ書 41:6",
     era: "BC740",
-    background: "恐れるな、わたしはあなたと共にいると神の慰めを伝えた力強い励まし。",
+    background: "人々が互いに支え合い、励まし合う姿を描いた言葉。困難なときこそ声をかけ合う大切さを伝える。",
     characterImage: "/characters/isaiah.png",
     characterProfile: {
       age: "50代",
@@ -291,11 +291,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 13,
-    quote: "わたしがあなたがたに対していだいている計画はわたしが知っている。それは災を与えようというのではなく、平安を与え、あなたがたに将来と希望を与えようとするものである。",
+    quote: "それは災を与えようというのではなく、平安を与え、あなたがたに将来と希望を与えようとするものである。",
     speaker: "エレミヤ",
     reference: "エレミヤ書 29:11",
     era: "BC627",
-    background: "あなたがたのために立てる計画は平安であり希望だと、捕囚の民を慰めた言葉。",
+    background: "苦しみの中にある人々へ向けられた言葉。今がつらくても、その先には希望がある、と未来を指し示した。",
     characterImage: "/characters/jeremiah.png",
     characterProfile: {
       age: "40代",
@@ -315,11 +315,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 14,
-    quote: "わたしの神はその使をおくって、ししの口を閉ざされたので、ししはわたしを害しませんでした。",
+    quote: "賢い者は、大空の輝きのように輝き、また多くの人を義に導く者は、星のようになって永遠にいたる。",
     speaker: "ダニエル",
-    reference: "ダニエル書 6:22",
+    reference: "ダニエル書 12:3",
     era: "BC605",
-    background: "獅子の穴に投げ込まれても、神が獅子の口を閉ざし守られたと証しした場面。",
+    background: "知恵をもって人を良い道へ導く者は、星のように輝き続けるという、生き方をたたえた言葉。",
     characterImage: "/characters/daniel.png",
     characterProfile: {
       age: "30代",
@@ -339,11 +339,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 15,
-    quote: "あなたがたの思いわずらいを、いっさい神にゆだねるがよい。神があなたがたのことを心配してくださるからである。",
+    quote: "あなたがたは皆、心をひとつにし、同情し合い、兄弟愛をもち、あわれみ深くあり、謙虚でありなさい。",
     speaker: "ペテロ",
-    reference: "ペテロの第一の手紙 5:7",
+    reference: "ペテロの第一の手紙 3:8",
     era: "AD30",
-    background: "思い煩いをすべて神にゆだねよ、神が心にかけてくださると説いた言葉。",
+    background: "ペテロが人々に説いた教え。心を合わせ、互いを思いやり、へりくだって生きることの大切さを語る。",
     characterImage: "/characters/peter.png",
     characterProfile: {
       age: "40代",
@@ -363,11 +363,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 16,
-    quote: "わたしを強くして下さるかたによって、なんでもすることができる。",
+    quote: "悪に負けてはいけない。かえって、善をもって悪に勝ちなさい。",
     speaker: "パウロ",
-    reference: "ピリピ人への手紙 4:13",
+    reference: "ローマ人への手紙 12:21",
     era: "AD34",
-    background: "わたしを強くしてくださる方によって、すべてのことができると確信を語った言葉。",
+    background: "パウロの教え。悪意に悪意で返さず、善い行いで乗り越えよ、という人としての生き方を説いた言葉。",
     characterImage: "/characters/paul.png",
     characterProfile: {
       age: "40代",
@@ -391,7 +391,7 @@ export const quotes: Quote[] = [
     speaker: "パウロ",
     reference: "コリント人への第一の手紙 13:4",
     era: "AD34",
-    background: "愛は寛容であり親切である、と愛の本質を綴った有名な「愛の賛歌」。",
+    background: "有名な「愛の賛歌」の一節。愛とは何かを具体的に描いた、時代を超えて読み継がれる普遍的な言葉。",
     characterImage: "/characters/paul.png",
     characterProfile: {
       age: "40代",
@@ -415,7 +415,7 @@ export const quotes: Quote[] = [
     speaker: "ヨハネ",
     reference: "ヨハネの第一の手紙 4:18",
     era: "AD30",
-    background: "愛には恐れがなく、完全な愛は恐れを取り除くと説いた「愛の使徒」の言葉。",
+    background: "本物の愛は不安や恐れを和らげる。人と人との信頼が心の恐れを溶かすことを語った言葉。",
     characterImage: "/characters/john.png",
     characterProfile: {
       age: "20代",
@@ -439,7 +439,7 @@ export const quotes: Quote[] = [
     speaker: "イエス",
     reference: "マタイによる福音書 11:28",
     era: "AD30",
-    background: "疲れた者、重荷を負う者はわたしのもとに来なさいと招いた慈愛の言葉。",
+    background: "疲れ、重荷を抱えた人々へ向けたイエスの招き。頑張りすぎる人をやさしく受けとめる言葉。",
     characterImage: "/characters/jesus.png",
     characterProfile: {
       age: "30代",
@@ -459,11 +459,11 @@ export const quotes: Quote[] = [
   },
   {
     id: 20,
-    quote: "わたしは平安をあなたがたに残して行く。わたしの平安をあなたがたに与える。あなたがたは心を騒がせるな、またおじけるな。",
+    quote: "わたしは平安をあなたがたに残して行く。あなたがたは心を騒がせるな、またおじけるな。",
     speaker: "イエス",
     reference: "ヨハネによる福音書 14:27",
     era: "AD30",
-    background: "わたしは平安を与える、心を騒がせるなと弟子を励ました別れ際の言葉。",
+    background: "別れの場面でイエスが弟子に贈った言葉。不安に揺れる心へ、穏やかであれと語りかけた励まし。",
     characterImage: "/characters/jesus.png",
     characterProfile: {
       age: "30代",
