@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { usePageBg } from "@/lib/usePageBg";
 import type { Quote } from "@/types";
 import { quotes } from "@/data/quotes";
 import { getCollection } from "@/lib/collection";
@@ -11,6 +12,7 @@ import ResultCard from "@/components/ResultCard";
 type SortMode = "number" | "timeline";
 
 export default function CollectionPage() {
+  usePageBg("collection");
   const [mounted, setMounted] = useState(false);
   const [sort, setSort] = useState<SortMode>("number");
   const [ownedIds, setOwnedIds] = useState<Set<number>>(new Set());
@@ -202,7 +204,7 @@ function DetailModal({
             </p>
             <Link
               href="/gacha"
-              className="mt-5 inline-block rounded-full bg-gold px-6 py-2.5 font-bold text-brown-dark shadow-card transition-colors hover:bg-gold-dark"
+              className="btn-ornate mt-5 inline-block px-6 py-2.5"
             >
               ガチャで手に入れる
             </Link>
@@ -210,7 +212,7 @@ function DetailModal({
         )}
         <button
           onClick={onClose}
-          className="mt-3 w-full rounded-full bg-brown py-2.5 font-bold text-parchment-light shadow-card transition-colors hover:bg-brown-dark"
+          className="btn-ornate-dark mt-3 w-full py-2.5"
         >
           閉じる
         </button>

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePageBg } from "@/lib/usePageBg";
 import type { DiaryEntry, Quote } from "@/types";
 import { quotes } from "@/data/quotes";
 import { getCollection } from "@/lib/collection";
@@ -13,6 +14,7 @@ function quoteById(id: number): Quote | undefined {
 }
 
 export default function DiaryPage() {
+  usePageBg("diary");
   const [mounted, setMounted] = useState(false);
   const [today] = useState(getTodayKey());
   const [todayQuoteId, setTodayQuoteId] = useState<number | null>(null);
@@ -95,7 +97,7 @@ export default function DiaryPage() {
 
         <button
           onClick={handleSave}
-          className="w-full rounded-full bg-gold py-2.5 font-bold text-parchment-light shadow-card transition-colors hover:bg-gold-dark"
+          className="btn-ornate w-full py-2.5"
         >
           {saved ? "保存しました" : "保存する"}
         </button>

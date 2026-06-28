@@ -13,24 +13,48 @@ body {
 }
 
 body {
-  /* 羊皮紙の地に淡い金のにじみ */
+  /* 当時のイスラエルの街並みを全面背景に（固定） */
   background-color: theme("colors.parchment.DEFAULT");
-  background-image:
-    radial-gradient(
-      circle at 20% 12%,
-      rgba(201, 162, 75, 0.1),
-      transparent 42%
-    ),
-    radial-gradient(
-      circle at 82% 78%,
-      rgba(74, 53, 39, 0.08),
-      transparent 46%
-    );
+  background-image: url("/brand/bg.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
   background-attachment: fixed;
   color: theme("colors.brown.DEFAULT");
   font-family: theme("fontFamily.serif");
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* 背景の上に薄い羊皮紙の膜を重ね、文字とカードの可読性を保つ */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-color: rgba(244, 236, 216, 0.62);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ページ別の背景画像（body[data-bg]で切替） */
+body[data-bg="collection"] {
+  background-image: url("/brand/bg-collection.jpg");
+}
+body[data-bg="diary"] {
+  background-image: url("/brand/bg-diary.jpg");
+}
+/* ガチャは宇宙（暗い）。背景はそのまま、膜は暗めにして文字を映えさせる */
+body[data-bg="gacha"] {
+  background-image: url("/brand/bg-gacha.jpg");
+}
+body[data-bg="gacha"]::before {
+  background-color: rgba(20, 16, 30, 0.45);
+}
+
+/* 本文コンテンツは膜より前面に */
+body > * {
+  position: relative;
+  z-index: 1;
 }
 
 /* 共通の見出し字間 */
@@ -43,4 +67,73 @@ h3 {
 /* 画像未配置でも崩れにくいフォールバック背景 */
 .char-img-fallback {
   background-color: theme("colors.parchment.dark");
+}
+
+/* 古代イスラエル風・金の装飾ボタン */
+.btn-ornate {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(110, 84, 30, 0.7);
+  background-image: linear-gradient(
+    180deg,
+    #e6cf86 0%,
+    #d8be72 28%,
+    #c9a24b 60%,
+    #a07e2e 100%
+  );
+  color: #3a2a1a;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 246, 214, 0.75),
+    inset 0 -2px 4px rgba(110, 84, 30, 0.45),
+    0 6px 16px rgba(46, 33, 24, 0.3);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-ornate:hover {
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+.btn-ornate:active {
+  transform: translateY(1px);
+  filter: brightness(0.97);
+}
+/* 内側の細い金枠（装飾） */
+.btn-ornate::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 246, 214, 0.45);
+  pointer-events: none;
+}
+
+/* 濃茶系の装飾ボタン（戻る・閉じる用） */
+.btn-ornate-dark {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(201, 162, 75, 0.55);
+  background-image: linear-gradient(180deg, #5b4332 0%, #3a2a1a 100%);
+  color: #f4ecd8;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow:
+    inset 0 1px 0 rgba(201, 162, 75, 0.3),
+    0 5px 14px rgba(46, 33, 24, 0.35);
+  transition: transform 0.15s ease, filter 0.15s ease;
+}
+.btn-ornate-dark:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+.btn-ornate-dark:active {
+  transform: translateY(1px);
 }

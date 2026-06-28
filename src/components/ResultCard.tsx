@@ -16,18 +16,8 @@ const RARITY_TEXT: Record<Rarity, string> = {
   SSR: "text-rarity-ssr",
 };
 
-function Row({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="flex gap-2 text-xs">
-      <span className="w-14 shrink-0 font-bold text-gold-dark">{label}</span>
-      <span className="text-brown">{value}</span>
-    </div>
-  );
-}
-
 export default function ResultCard({ quote }: { quote: Quote }) {
   const [imgError, setImgError] = useState(false);
-  const p = quote.characterProfile;
 
   return (
     <article
@@ -90,20 +80,6 @@ export default function ResultCard({ quote }: { quote: Quote }) {
           <p className="text-xs leading-relaxed text-brown">
             {quote.eraDescription}
           </p>
-        </div>
-
-        {/* 人物プロフィール（全項目） */}
-        <div className="space-y-1.5 border-t border-parchment-dark pt-3">
-          <p className="mb-1 text-xs font-bold text-gold-dark">人物プロフィール</p>
-          <Row label="年齢" value={p.age} />
-          <Row label="性格" value={p.personality} />
-          <Row label="外見" value={p.appearance} />
-          <Row label="髪" value={p.hair} />
-          <Row label="瞳" value={p.eyes} />
-          <Row label="体格" value={p.build} />
-          <Row label="象徴" value={p.iconicItem} />
-          <Row label="人物像" value={p.character} />
-          <Row label="時代" value={quote.era} />
         </div>
       </div>
     </article>

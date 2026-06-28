@@ -76,7 +76,7 @@ export default function HomePage() {
       {!drawnToday && (
         <Link
           href="/gacha"
-          className="block animate-cardReveal rounded-2xl bg-gold px-6 py-5 text-center text-lg font-bold text-brown-dark shadow-glow transition-transform hover:scale-[1.02]"
+          className="btn-ornate animate-cardReveal block w-full px-6 py-5 text-center text-lg"
         >
           🎲 今日のガチャを回す
         </Link>

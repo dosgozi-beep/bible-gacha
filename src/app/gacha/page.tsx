@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePageBg } from "@/lib/usePageBg";
 import type { Quote } from "@/types";
 import { canDrawToday, drawQuote, markDrawn } from "@/lib/gacha";
 import { addToCollection } from "@/lib/collection";
@@ -11,6 +12,7 @@ import ResultCard from "@/components/ResultCard";
 type Phase = "idle" | "spinning" | "scatter" | "result";
 
 export default function GachaPage() {
+  usePageBg("gacha");
   const [mounted, setMounted] = useState(false);
   const [canDraw, setCanDraw] = useState(false);
   const [phase, setPhase] = useState<Phase>("idle");
@@ -82,7 +84,7 @@ export default function GachaPage() {
             {phase === "idle" && canDraw && (
               <button
                 onClick={handleDraw}
-                className="rounded-full bg-gold px-10 py-3 text-base font-bold text-brown-dark shadow-glow transition-transform hover:scale-105 active:scale-95"
+                className="btn-ornate px-10 py-3 text-base"
               >
                 ガチャを回す
               </button>
@@ -113,7 +115,7 @@ export default function GachaPage() {
           </p>
           <Link
             href="/"
-            className="block rounded-full bg-brown py-3 text-center font-bold text-parchment-light shadow-card transition-colors hover:bg-brown-dark"
+            className="btn-ornate-dark block w-full py-3 text-center"
           >
             トップへ戻る
           </Link>
